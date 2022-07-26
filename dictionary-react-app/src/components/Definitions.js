@@ -50,7 +50,7 @@ function Definitions() {
                                 </div>
                             </div>
                         </article>
-                    )
+                    );
                 })
             }
         </section>
