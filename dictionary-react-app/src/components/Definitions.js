@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 function Definitions(props) {
     const { meanings } = props;
 
@@ -26,6 +27,10 @@ function Definitions(props) {
             }
         </section>
     )
+}
+
+Definitions.propType = {
+    meanings: PropTypes.array.isRequired
 }
 
 export default Definitions;

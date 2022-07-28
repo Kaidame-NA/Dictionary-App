@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 function Phonetics(props) {
     const { phonetics } = props;
     
@@ -25,6 +26,10 @@ function Phonetics(props) {
             </section>
         </>
     )
+}
+
+Phonetics.propTypes = {
+    phonetics: PropTypes.array.isRequired
 }
 
 export default Phonetics;

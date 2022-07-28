@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 
 class Search extends Component {
     constructor(props) {
@@ -41,5 +42,9 @@ class Search extends Component {
         );
     }
 }
+
+Search.propTypes = {
+    updateUI: PropTypes.func.isRequired
+};
 
 export default Search;
