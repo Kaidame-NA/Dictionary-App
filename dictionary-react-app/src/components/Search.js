@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Search extends Component {
     constructor(props) {
@@ -9,8 +10,22 @@ class Search extends Component {
     }
 
     changeWord = (event) => {
-        this.setState({word: event.target.value});
+        this.setState({ word: event.target.value });
     }
+
+    fetchDefinitions = async (event) => {
+        event.preventDefault();
+        const dictionaryAPI = "https://api.dictionaryapi.dev/api/v2/entries/en_US/";
+        const wordToDefine = this.state.word;
+        try {
+            const response = await axios.get(`${dictionaryAPI}${wordToDefine}`);
+            const data = response.data;
+            this.props.updateUI(data[0]);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     render() {
         return (
             <section className="section">
@@ -19,7 +34,7 @@ class Search extends Component {
                         <input className="input is-large is-fullwide" id="define-input" placeholder="Enter a Word" type="text" value={this.state.word} onChange={this.changeWord} />
                     </div>
                     <div className="control">
-                        <button className="button is-info is-large" id="define-btn">Define</button>
+                        <button className="button is-info is-large" id="define-btn" onClick={this.fetchDefinitions}>Define</button>
                     </div>
                 </div>
             </section>
